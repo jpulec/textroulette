@@ -8,5 +8,5 @@ class UserForm(ModelForm):
         fields = ['phone_number'] 
 
     def is_valid(self, *args, **kwargs):
-        super(UserForm).is_valid(self, *args, **kwargs)
+        super(UserForm, self).is_valid()
 
