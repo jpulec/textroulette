@@ -1,5 +1,5 @@
 from django.views.generic.edit import FormView
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from textroulette.apps.main.forms import UserForm
@@ -30,3 +30,7 @@ class Success(TemplateView):
 
 class Duplicate(TemplateView):
     template_name = "main/duplicate.html"
+
+class Twilio(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('<?xml version="1.0" encoding="UTF-8" ?><Response><Redirect>https://demo.twilio.com/sms/welcome</Redirect></Response>')
