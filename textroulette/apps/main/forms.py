@@ -11,6 +11,6 @@ class UserForm(ModelForm):
 
     def is_valid(self, *args, **kwargs):
         super(UserForm, self).is_valid()
-        pattern = re.compile('(\d{3})-?(\d{3})-?(\d{3})$')
+        pattern = re.compile('(\d{3})-?(\d{3})-?(\d{4})$')
         result = pattern.match(self.cleaned_data.get('phone_number'))
         return result
