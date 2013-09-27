@@ -17,7 +17,12 @@ class Home(FormView):
         except ObjectDoesNotExist:
             self.object = form.save()
             if UserNumber.objects.count() > 1:
-                self.object.connected = UserNumber.objects.exclude(id=self.object.id).order_by('?')[0]
+                connectee = UserNumber.objects.exclude(id=self.object.id).order_by('?')[0]
+                self.object.connected = connectee
+                connectee.connected = self.object
+                connectee.save()
+                self.object.save()
+
         return super(Home, self).form_valid(form)
 
 class Success(TemplateView):
