@@ -1,4 +1,5 @@
 from django.views.generic.edit import FormView
+from django.views.generic.base import TemplateView
 from textroulette.apps.main.forms import UserForm
 from textroulette.apps.main.models import UserNumber
 
