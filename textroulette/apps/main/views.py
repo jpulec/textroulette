@@ -4,4 +4,3 @@ class Home(TemplateView):
     template_name = "main/home.html"
 
 
-

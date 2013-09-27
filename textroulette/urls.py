@@ -4,7 +4,7 @@ from django.conf import settings
 
 admin.autodiscover()
 
-from CS638_proj3.apps.main.views import Home
+from textroulette.apps.main.views import Home
 
 
 urlpatterns = patterns('',

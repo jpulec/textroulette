@@ -1,4 +1,4 @@
-# Django settings for CS638_proj3 project.
+# Django settings for textroulette project.
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -99,10 +99,10 @@ MIDDLEWARE_CLASSES = (
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'CS638_proj3.urls'
+ROOT_URLCONF = 'textroulette.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'CS638_proj3.wsgi.application'
+WSGI_APPLICATION = 'textroulette.wsgi.application'
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    'CS638_proj3.apps.main',
+    'textroulette.apps.main',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
