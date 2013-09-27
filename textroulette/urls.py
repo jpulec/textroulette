@@ -4,7 +4,7 @@ from django.conf import settings
 
 admin.autodiscover()
 
-from textroulette.apps.main.views import Home, Success, Duplicate
+from textroulette.apps.main.views import Home, Success, Duplicate, Twilio
 
 
 urlpatterns = patterns('',
@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', Home.as_view(), name="home"),
     url(r'^success/$', Success.as_view(), name="success"),
     url(r'^duplicate/$', Duplicate.as_view(), name="duplicate"),
+    url(r'^twilio/$', Twilio.as_view(), name="twilio"),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
