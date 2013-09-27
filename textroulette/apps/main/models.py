@@ -7,3 +7,6 @@ class UserNumber(models.Model):
 
     def __unicode__(self):
         return "#" + self.phone_number
+
+class Message(models.Model):
+    id = models.CharField(max_length=34, primary_key=True)

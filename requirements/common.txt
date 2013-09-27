@@ -1,1 +1,4 @@
 Django==1.5.4
+-e git://github.com/ui/django-rq.git#egg=django-rq
+requests==1.2.3
+-e git://github.com/ui/rq-scheduler.git#egg=rq-scheduler

@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'django_rq',
     'textroulette.apps.main',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
@@ -154,3 +155,21 @@ LOGGING = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+RQ_QUEUES = {
+        'default': {
+            'HOST': 'localhost',
+            'PORT': 6379,
+            'DB': 0,
+            },
+        'high': {
+            'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379'), # If you're on Heroku
+            'DB': 0,
+            },
+        'low': {
+            'HOST': 'localhost',
+            'PORT': 6379,
+            'DB': 0,
+            }
+        }
