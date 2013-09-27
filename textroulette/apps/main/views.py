@@ -2,6 +2,7 @@ from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView, View
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 from textroulette.apps.main.forms import UserForm
 from textroulette.apps.main.models import UserNumber
 
@@ -32,5 +33,13 @@ class Duplicate(TemplateView):
     template_name = "main/duplicate.html"
 
 class Twilio(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('<?xml version="1.0" encoding="UTF-8" ?><Response><Redirect>https://demo.twilio.com/sms/welcome</Redirect></Response>')
+
+    def post(self, request, *args, **kwargs):
+        if request.POST:
+            xml = '<?xml version="1.0" encoding="UTF-8" ?><Response><Message to="' + "+1" + UserNumber.objects.get(phone_number=request.POST['From'][2:]).connected.phone_number + '">' + request.POST['Body'] + '</Message></Response>'
+            return HttpResponse(xml, content_type="text/xml")
+
+
+    @csrf_exempt
+    def dispatch(self, *args, **kwargs):
+        return super(Twilio, self).dispatch(*args, **kwargs)
