@@ -4,13 +4,13 @@ from django.conf import settings
 
 admin.autodiscover()
 
-from textroulette.apps.main.views import Home
+from textroulette.apps.main.views import Home, Success
 
 
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', Home.as_view(), name="home"),
-
+    url(r'^success/$', Success.as_view(), name="success"),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

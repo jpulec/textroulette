@@ -2,8 +2,7 @@ from django.views.generic.base import TemplateView
 
 class Home(TemplateView):
     template_name = "main/home.html"
-    success_url = "main/success.html"
+    success_url = "/success/"
 
-
-    def form_valid(self, form):
-
+class Success(TemplateView):
+    template_name = "main/success.html"
