@@ -2,4 +2,5 @@ from django.db import models
 
 
 class UserNumber(models.Model):
-    phone_number = models.CharField(max_length=10)
+    phone_number = models.PositiveIntegerField()
+    connected = models.OneToOneField('UserNumber')
