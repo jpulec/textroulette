@@ -1,7 +1,7 @@
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView, View
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from textroulette.apps.main.forms import UserForm
 from textroulette.apps.main.models import UserNumber
