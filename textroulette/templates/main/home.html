@@ -6,7 +6,11 @@
 {% block body %}
 
 <div class="jumbotron">
-    <h1>Enter your number to start receiving messages from anyone.</h1>
+    <h3>Enter your number to start receiving messages from anyone.</h3>
+    <form>
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-large btn-primary">Sign Me Up</button>
+    </form>
 </div>
 
 {% endblock body %}
