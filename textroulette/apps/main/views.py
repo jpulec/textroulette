@@ -36,6 +36,20 @@ class Twilio(View):
 
     def post(self, request, *args, **kwargs):
         if request.POST:
+            if request.POST['Body'].startswith("STOP"):
+                connected = UserNumber.objects.get(phone_number=request.POST['From'][2:]).connected
+                UserNumber.objects.get(phone_number=request.POST['From'][2:]).delete()
+                if UserNumber.objects.count() > 1:
+                    connectee = UserNumber.objects.exclude(id=connected.id).order_by('?')[0]
+                    connected.connected = connectee
+                    connected.save()
+            if request.POST['Body'].startswith("NEXT"):
+                connected = UserNumber.objects.get(phone_number=request.POST['From'][2:]).connected
+                from_user = UserNumber.objects.get(phone_number=request.POST['From'][2:])
+                from_user.connected = UserNumber.objects.exclude(id=from_user.id).order_by('?')[0]
+                from_user.save()
+                connected.connected = UserNumber.objects.exclude(id=connected.id).order_by('?')[0]
+                connected.save()
             xml = '<?xml version="1.0" encoding="UTF-8" ?><Response><Message to="' + "+1" + UserNumber.objects.get(phone_number=request.POST['From'][2:]).connected.phone_number + '">' + request.POST['Body'] + '</Message></Response>'
             return HttpResponse(xml, content_type="text/xml")
 
